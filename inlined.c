@@ -67,3 +67,33 @@ int rte_pktmbuf_chain_(struct rte_mbuf *head, struct rte_mbuf *tail)
 {
     return rte_pktmbuf_chain(head, tail);
 }
+
+int rte_eth_rss_ip_()
+{
+    return RTE_ETH_RSS_IP;
+}
+
+int rte_eth_tx_offload_tcp_cksum_()
+{
+    return RTE_ETH_TX_OFFLOAD_TCP_CKSUM;
+}
+
+int rte_eth_rx_offload_tcp_cksum_()
+{
+    return RTE_ETH_RX_OFFLOAD_TCP_CKSUM;
+}
+
+int rte_eth_tx_offload_udp_cksum_()
+{
+    return RTE_ETH_TX_OFFLOAD_UDP_CKSUM;
+}
+
+int rte_eth_rx_offload_udp_cksum_()
+{
+    return RTE_ETH_RX_OFFLOAD_TCP_CKSUM;
+}
+
+int rte_eth_tx_offload_multi_segs_()
+{
+    return RTE_ETH_TX_OFFLOAD_MULTI_SEGS;
+}

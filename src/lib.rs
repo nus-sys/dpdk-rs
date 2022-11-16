@@ -23,6 +23,12 @@ extern "C" {
     fn rte_pktmbuf_tailroom_(m: *const rte_mbuf) -> u16;
     fn rte_errno_() -> c_int;
     fn rte_pktmbuf_chain_(head: *mut rte_mbuf, tail: *mut rte_mbuf) -> c_int;
+    fn rte_eth_rss_ip_() -> c_int;
+    fn rte_eth_tx_offload_tcp_cksum_() -> c_int;
+    fn rte_eth_tx_offload_udp_cksum_() -> c_int;
+    fn rte_eth_rx_offload_tcp_cksum_() -> c_int;
+    fn rte_eth_rx_offload_udp_cksum_() -> c_int;
+    fn rte_eth_tx_offload_multi_segs_() -> c_int;
 }
 
 #[cfg(feature = "mlx5")]
@@ -108,4 +114,34 @@ pub unsafe fn rte_errno() -> c_int {
 #[inline]
 pub unsafe fn rte_pktmbuf_chain(head: *mut rte_mbuf, tail: *mut rte_mbuf) -> c_int {
     rte_pktmbuf_chain_(head, tail)
+}
+
+#[inline]
+pub unsafe fn rte_eth_rss_ip() -> c_int {
+    rte_eth_rss_ip_()
+}
+
+#[inline]
+pub unsafe fn rte_eth_tx_offload_tcp_cksum() -> c_int {
+    rte_eth_tx_offload_tcp_cksum_()
+}
+
+#[inline]
+pub unsafe fn rte_eth_rx_offload_tcp_cksum() -> c_int {
+    rte_eth_rx_offload_tcp_cksum_()
+}
+
+#[inline]
+pub unsafe fn rte_eth_tx_offload_udp_cksum() -> c_int {
+    rte_eth_tx_offload_udp_cksum_()
+}
+
+#[inline]
+pub unsafe fn rte_eth_rx_offload_udp_cksum() -> c_int {
+    rte_eth_rx_offload_udp_cksum_()
+}
+
+#[inline]
+pub unsafe fn rte_eth_tx_offload_multi_segs() -> c_int {
+    rte_eth_tx_offload_multi_segs_()
 }
