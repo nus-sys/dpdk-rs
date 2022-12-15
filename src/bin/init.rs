@@ -77,10 +77,10 @@ unsafe fn initialize_dpdk_port(port_id: u16, mbuf_pool: *mut rte_mempool) {
     };
 
     let mut port_conf: rte_eth_conf = { MaybeUninit::zeroed().assume_init() };
-    port_conf.rxmode.max_rx_pkt_len = RTE_ETHER_MAX_LEN;
-    port_conf.rxmode.mq_mode = rte_eth_rx_mq_mode_ETH_MQ_RX_RSS;
-    port_conf.rx_adv_conf.rss_conf.rss_hf = ETH_RSS_IP as u64 | dev_info.flow_type_rss_offloads;
-    port_conf.txmode.mq_mode = rte_eth_tx_mq_mode_ETH_MQ_TX_NONE;
+    port_conf.rxmode.max_lro_pkt_size = RTE_ETHER_MAX_LEN;
+    port_conf.rxmode.mq_mode = rte_eth_rx_mq_mode_RTE_ETH_MQ_RX_RSS;
+    port_conf.rx_adv_conf.rss_conf.rss_hf = rte_eth_rss_ip() as u64 | dev_info.flow_type_rss_offloads;
+    port_conf.txmode.mq_mode = rte_eth_tx_mq_mode_RTE_ETH_MQ_TX_NONE;
 
     let mut rx_conf: rte_eth_rxconf = { MaybeUninit::zeroed().assume_init() };
     rx_conf.rx_thresh.pthresh = rx_pthresh;
@@ -126,8 +126,8 @@ unsafe fn initialize_dpdk_port(port_id: u16, mbuf_pool: *mut rte_mempool) {
             let mut link: MaybeUninit<rte_eth_link> = MaybeUninit::zeroed();
             rte_eth_link_get_nowait(port_id, link.as_mut_ptr());
             let link = link.assume_init();
-            if link.link_status() as u32 == ETH_LINK_UP {
-                let duplex = if link.link_duplex() as u32 == ETH_LINK_FULL_DUPLEX {
+            if link.link_status() as u32 == RTE_ETH_LINK_UP {
+                let duplex = if link.link_duplex() as u32 == RTE_ETH_LINK_FULL_DUPLEX {
                     "full"
                 } else {
                     "half"
