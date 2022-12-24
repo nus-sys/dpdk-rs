@@ -73,6 +73,16 @@ int rte_eth_rss_ip_()
     return RTE_ETH_RSS_IP;
 }
 
+int rte_eth_rss_tcp_()
+{
+    return RTE_ETH_RSS_TCP;
+}
+
+int rte_eth_rss_udp_()
+{
+    return RTE_ETH_RSS_UDP;
+}
+
 int rte_eth_tx_offload_tcp_cksum_()
 {
     return RTE_ETH_TX_OFFLOAD_TCP_CKSUM;

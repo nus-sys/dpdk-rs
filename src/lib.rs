@@ -24,6 +24,8 @@ extern "C" {
     fn rte_errno_() -> c_int;
     fn rte_pktmbuf_chain_(head: *mut rte_mbuf, tail: *mut rte_mbuf) -> c_int;
     fn rte_eth_rss_ip_() -> c_int;
+    fn rte_eth_rss_tcp_() -> c_int;
+    fn rte_eth_rss_udp_() -> c_int;
     fn rte_eth_tx_offload_tcp_cksum_() -> c_int;
     fn rte_eth_tx_offload_udp_cksum_() -> c_int;
     fn rte_eth_rx_offload_tcp_cksum_() -> c_int;
@@ -50,8 +52,8 @@ pub fn load_mlx_driver() {
                     rte_pmd_mlx5_get_dyn_flag_names();
                 }
             }
-        } else {
-            compile_error!("Please select a Mellanox version.")
+        // } else {
+        //     compile_error!("Please select a Mellanox version.")
         }
     }
 }
@@ -119,6 +121,16 @@ pub unsafe fn rte_pktmbuf_chain(head: *mut rte_mbuf, tail: *mut rte_mbuf) -> c_i
 #[inline]
 pub unsafe fn rte_eth_rss_ip() -> c_int {
     rte_eth_rss_ip_()
+}
+
+#[inline]
+pub unsafe fn rte_eth_rss_tcp() -> c_int {
+    rte_eth_rss_tcp_()
+}
+
+#[inline]
+pub unsafe fn rte_eth_rss_udp() -> c_int {
+    rte_eth_rss_udp_()
 }
 
 #[inline]
