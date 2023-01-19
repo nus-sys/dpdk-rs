@@ -31,7 +31,12 @@ extern "C" {
     fn rte_eth_tx_offload_multi_segs_() -> c_int;
 }
 
-#[cfg(feature = "mlx5")]
+#[cfg(all(feature = "mlx5", target_os = "windows"))]
+extern "C" {
+    fn rte_pmd_mlx5_get_dyn_flag_names();
+}
+
+#[cfg(all(feature = "mlx5", target_os = "linux"))]
 #[link(name = "rte_net_mlx5")]
 extern "C" {
     fn rte_pmd_mlx5_get_dyn_flag_names();
