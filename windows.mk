@@ -29,5 +29,10 @@ BUILD = release
 BUILD = dev
 !endif
 
+# Set driver.
+!ifndef DRIVER
+DRIVER = mlx5
+!endif
+
 # Set build flags.
-FLAGS = $(FLAGS) --profile $(BUILD) --features=mlx4
+FLAGS = $(FLAGS) --profile $(BUILD) --features=$(DRIVER)
