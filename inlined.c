@@ -108,7 +108,7 @@ int rte_eth_tx_offload_multi_segs_()
     return RTE_ETH_TX_OFFLOAD_MULTI_SEGS;
 }
 
-unsigned int rte_lcore_id_() {
+static unsigned int rte_lcore_id_() {
     return rte_lcore_id();
 }
 
