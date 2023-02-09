@@ -108,14 +108,7 @@ int rte_eth_tx_offload_multi_segs_()
     return RTE_ETH_TX_OFFLOAD_MULTI_SEGS;
 }
 
-static unsigned int rte_lcore_id_() {
+int rte_lcore_id_() 
+{
     return rte_lcore_id();
 }
-
-unsigned int rte_lcore_count_() {
-    return rte_lcore_count();
-}
-
-// unsigned int rte_get_next_lcore_(unsigned int i, int skip_main, int wrap) {
-//     return rte_get_next_lcore(i, skip_main, wrap);
-// }
