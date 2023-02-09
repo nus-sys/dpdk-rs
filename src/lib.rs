@@ -31,9 +31,9 @@ extern "C" {
     fn rte_eth_rx_offload_tcp_cksum_() -> c_int;
     fn rte_eth_rx_offload_udp_cksum_() -> c_int;
     fn rte_eth_tx_offload_multi_segs_() -> c_int;
-    fn rte_lcore_id_() -> c_uint;
-    fn rte_lcore_count_() -> c_int;
-    fn rte_get_next_lcore_(i: c_int, skip_main: c_int, wrap: c_int) -> c_int;
+    // fn rte_lcore_id_() -> c_uint;
+    // fn rte_lcore_count_() -> c_int;
+    // fn rte_get_next_lcore_(i: c_int, skip_main: c_int, wrap: c_int) -> c_int;
 }
 
 #[cfg(feature = "mlx5")]
@@ -161,10 +161,10 @@ pub unsafe fn rte_eth_tx_offload_multi_segs() -> c_int {
     rte_eth_tx_offload_multi_segs_()
 }
 
-#[inline]
-pub unsafe fn rte_lcore_id() -> c_uint {
-    rte_lcore_id_()
-}
+// #[inline]
+// pub unsafe fn rte_lcore_id() -> c_uint {
+//     rte_lcore_id_()
+// }
 
 // #[inline]
 // pub unsafe fn rte_lcore_count() -> c_int {
