@@ -161,17 +161,17 @@ pub unsafe fn rte_eth_tx_offload_multi_segs() -> c_int {
     rte_eth_tx_offload_multi_segs_()
 }
 
-#[inline]
-pub unsafe fn rte_lcore_id() -> c_int {
-    rte_lcore_id_()
-}
+// #[inline]
+// pub unsafe fn rte_lcore_id() -> c_int {
+//     rte_lcore_id_()
+// }
 
-#[inline]
-pub unsafe fn rte_lcore_count() -> c_int {
-    rte_lcore_count_()
-}
+// #[inline]
+// pub unsafe fn rte_lcore_count() -> c_int {
+//     rte_lcore_count_()
+// }
 
-#[inline]
-pub unsafe fn rte_get_next_lcore(i: c_int, skip_main: c_int, wrap: c_int) -> c_int {
-    rte_get_next_lcore_(i, skip_main, wrap)
-}
+// #[inline]
+// pub unsafe fn rte_get_next_lcore(i: c_int, skip_main: c_int, wrap: c_int) -> c_int {
+//     rte_get_next_lcore_(i, skip_main, wrap)
+// }
