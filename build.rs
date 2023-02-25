@@ -31,6 +31,7 @@ fn os_build() -> Result<()> {
         "rte_rcu",
         "rte_ring",
         "rte_eal",
+        "rte_cycles",
         "rte_telemetry",
         "rte_kvargs",
     ];
@@ -224,6 +225,7 @@ fn os_build() -> Result<()> {
         .allowlist_function("rte_lcore_id")
         .allowlist_function("rte_lcore_count")
         .allowlist_function("rte_get_next_lcore")
+        .allowlist_function("rte_get_timer_hz")
         .clang_arg("-mavx")
         .header("wrapper.h")
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))

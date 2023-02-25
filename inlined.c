@@ -112,3 +112,8 @@ int rte_lcore_id_()
 {
     return rte_lcore_id();
 }
+
+uint64_t rte_get_timer_hz_() 
+{
+    return rte_get_timer_hz();
+}

@@ -32,6 +32,7 @@ extern "C" {
     fn rte_eth_rx_offload_udp_cksum_() -> c_int;
     fn rte_eth_tx_offload_multi_segs_() -> c_int;
     fn rte_lcore_id_() -> c_int;
+    fn rte_get_timer_hz_() -> u64;
 }
 
 #[cfg(feature = "mlx5")]
@@ -162,4 +163,9 @@ pub unsafe fn rte_eth_tx_offload_multi_segs() -> c_int {
 #[inline]
 pub unsafe fn rte_lcore_id() -> c_int {
     rte_lcore_id_()
+}
+
+#[inline]
+pub unsafe fn rte_get_timer_hz() -> u64 {
+    rte_get_timer_hz_()
 }
