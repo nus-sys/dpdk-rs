@@ -9,6 +9,11 @@
 #include <rte_mbuf.h>
 #include <rte_memcpy.h>
 
+void *rte_memcpy_(void *dst, const void *src, size_t n)
+{
+    return rte_memcpy(dst, src, n);
+}
+
 void rte_pktmbuf_free_(struct rte_mbuf *packet)
 {
     rte_pktmbuf_free(packet);

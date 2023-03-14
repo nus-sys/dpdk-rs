@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 #![allow(unused)]
 
-use ::std::os::raw::{c_char, c_int, c_uint};
+use ::std::os::raw::{c_char, c_int, c_uint, c_void};
 
 #[link(name = "inlined")]
 extern "C" {
@@ -33,6 +33,7 @@ extern "C" {
     fn rte_eth_tx_offload_multi_segs_() -> c_int;
     fn rte_lcore_id_() -> c_int;
     fn rte_get_timer_hz_() -> u64;
+    fn rte_memcpy_(dst: *mut c_void, src: *const c_void, n: usize) -> *mut c_void;
 }
 
 #[cfg(feature = "mlx5")]
@@ -168,4 +169,9 @@ pub unsafe fn rte_lcore_id() -> c_int {
 #[inline]
 pub unsafe fn rte_get_timer_hz() -> u64 {
     rte_get_timer_hz_()
+}
+
+#[inline]
+pub unsafe fn rte_memcpy(dst: *mut c_void, src: *const c_void, n: usize) -> *mut c_void {
+    rte_memcpy_(dst, src, n)
 }
