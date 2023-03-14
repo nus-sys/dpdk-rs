@@ -7,6 +7,7 @@
 #include <rte_ethdev.h>
 #include <rte_ether.h>
 #include <rte_mbuf.h>
+#include <rte_memcpy.h>
 
 void rte_pktmbuf_free_(struct rte_mbuf *packet)
 {
@@ -16,6 +17,11 @@ void rte_pktmbuf_free_(struct rte_mbuf *packet)
 struct rte_mbuf *rte_pktmbuf_alloc_(struct rte_mempool *mp)
 {
     return rte_pktmbuf_alloc(mp);
+}
+
+static void *rte_memcpy(void *dst, const void *src, size_t n)
+{
+    return rte_memcpy(dst, src, n);
 }
 
 uint16_t rte_eth_tx_burst_(uint16_t port_id, uint16_t queue_id, struct rte_mbuf **tx_pkts, uint16_t nb_pkts)
