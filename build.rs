@@ -35,6 +35,7 @@ fn os_build() -> Result<()> {
         "rte_telemetry",
         "rte_kvargs",
         "rte_memcpy",
+        "rte_malloc",
     ];
 
     let cflags: &str = "-mavx";
@@ -228,6 +229,7 @@ fn os_build() -> Result<()> {
         .allowlist_function("rte_get_next_lcore")
         .allowlist_function("rte_get_timer_hz")
         .allowlist_function("rte_memcpy")
+        .allowlist_function("rte_zmalloc")
         .clang_arg("-mavx")
         .header("wrapper.h")
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))

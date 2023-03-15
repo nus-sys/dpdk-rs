@@ -8,6 +8,12 @@
 #include <rte_ether.h>
 #include <rte_mbuf.h>
 #include <rte_memcpy.h>
+#include <rte_malloc.h>
+
+void *rte_zmalloc_(const char *type, size_t size, unsigned align)
+{
+    return rte_zmalloc(type, size, align);
+}
 
 void *rte_memcpy_(void *dst, const void *src, size_t n)
 {
