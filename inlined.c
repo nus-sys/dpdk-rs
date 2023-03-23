@@ -129,3 +129,8 @@ uint64_t rte_get_timer_hz_()
 {
     return rte_get_timer_hz();
 }
+
+char *rte_pktmbuf_prepend_(struct rte_mbuf *m, uint16_t len)
+{
+    return rte_pktmbuf_prepend(m, len);
+}

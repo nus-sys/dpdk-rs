@@ -230,6 +230,7 @@ fn os_build() -> Result<()> {
         .allowlist_function("rte_get_timer_hz")
         .allowlist_function("rte_memcpy")
         .allowlist_function("rte_zmalloc")
+        .allowlist_function("rte_pktmbuf_prepend")
         .clang_arg("-mavx")
         .header("wrapper.h")
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))

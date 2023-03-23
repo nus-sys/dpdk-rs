@@ -35,6 +35,7 @@ extern "C" {
     fn rte_get_timer_hz_() -> u64;
     fn rte_memcpy_(dst: *mut c_void, src: *const c_void, n: usize) -> *mut c_void;
     fn rte_zmalloc_(t: *const c_char, size: usize, align: usize) -> *mut c_void;
+    fn rte_pktmbuf_prepend_(m: *mut rte_mbuf, len: u16) -> *mut c_char;
 }
 
 #[cfg(feature = "mlx5")]
@@ -180,4 +181,9 @@ pub unsafe fn rte_memcpy(dst: *mut c_void, src: *const c_void, n: usize) -> *mut
 #[inline]
 pub unsafe fn rte_zmalloc(t: *const c_char, size: usize, align: usize) -> *mut c_void {
     rte_zmalloc_(t, size, align)
+}
+
+#[inline]
+pub unsafe fn rte_pktmbuf_prepend(m: *mut rte_mbuf, len: u16) -> *mut c_char {
+    rte_pktmbuf_prepend_(m, len)
 }
