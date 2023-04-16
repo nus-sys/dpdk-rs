@@ -26,9 +26,11 @@ extern "C" {
     fn rte_eth_rss_ip_() -> c_int;
     fn rte_eth_rss_tcp_() -> c_int;
     fn rte_eth_rss_udp_() -> c_int;
+    fn rte_eth_tx_offload_ip_cksum_() -> c_int;
+    fn rte_eth_rx_offload_ip_cksum_() -> c_int;
     fn rte_eth_tx_offload_tcp_cksum_() -> c_int;
-    fn rte_eth_tx_offload_udp_cksum_() -> c_int;
     fn rte_eth_rx_offload_tcp_cksum_() -> c_int;
+    fn rte_eth_tx_offload_udp_cksum_() -> c_int;
     fn rte_eth_rx_offload_udp_cksum_() -> c_int;
     fn rte_eth_tx_offload_multi_segs_() -> c_int;
     fn rte_lcore_id_() -> c_int;
@@ -136,6 +138,16 @@ pub unsafe fn rte_eth_rss_tcp() -> c_int {
 #[inline]
 pub unsafe fn rte_eth_rss_udp() -> c_int {
     rte_eth_rss_udp_()
+}
+
+#[inline]
+pub unsafe fn rte_eth_tx_offload_ip_cksum() -> c_int {
+    rte_eth_tx_offload_ip_cksum_()
+}
+
+#[inline]
+pub unsafe fn rte_eth_rx_offload_ip_cksum() -> c_int {
+    rte_eth_rx_offload_ip_cksum_()
 }
 
 #[inline]
