@@ -308,6 +308,7 @@ fn os_build() -> Result<()> {
         .allowlist_function("rte_mempool_lookup")
         .allowlist_function("rte_flow_validate")
         .allowlist_function("rte_flow_create")
+        .allowlist_function("rte_mempool_avail_count")
         .clang_arg("-mavx")
         .header("wrapper.h")
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))
